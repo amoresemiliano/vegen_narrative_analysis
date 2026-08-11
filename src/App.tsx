@@ -61,7 +61,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E7E8EB] text-[#292C32] font-sans selection:bg-blue-600 selection:text-white antialiased flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-[#D4D7E5] via-[#DBDEEA] to-[#E1DFEA] text-[#292C32] font-sans selection:bg-[#7257E8] selection:text-white antialiased flex flex-col relative overflow-x-hidden">
+      {/* Soft Ambient Diffuse Background Halos */}
+      <div className="fixed top-[-100px] right-[-100px] w-[600px] h-[600px] ambient-glow-violet rounded-full pointer-events-none z-0 opacity-80" />
+      <div className="fixed top-[30%] left-[-150px] w-[550px] h-[550px] ambient-glow-blue rounded-full pointer-events-none z-0 opacity-70" />
+      <div className="fixed bottom-[-100px] right-[20%] w-[500px] h-[500px] ambient-glow-orange rounded-full pointer-events-none z-0 opacity-60" />
+
       {/* Navigation Header / Bar */}
       <Navigation
         activeView={activeView}
@@ -70,7 +75,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-4 sm:pt-6">
+      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-4 sm:pt-6 relative z-10">
         {/* VIEW 1: HOME */}
         {activeView === 'home' && (
           <HomeView

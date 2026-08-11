@@ -22,18 +22,20 @@ export const ExploreTopicView: React.FC<Props> = ({ topic, activeTab, onSelectTa
   return (
     <div className="space-y-6 pb-12">
       {/* Research Topic Header Card */}
-      <section className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 sm:p-7 shadow-xs relative overflow-hidden">
-        <div className="space-y-4">
+      <section className="bg-white/80 backdrop-blur-md border border-white/90 rounded-2xl p-5 sm:p-7 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="space-y-4 relative z-10">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded bg-violet-50 text-violet-800 border border-violet-200 text-[10px] font-mono font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-lg bg-indigo-50 text-[#7257E8] border border-indigo-200/80 text-[10px] font-mono font-bold uppercase tracking-wider">
                 Espacio de investigación activo
               </span>
               <ObservationBadge type="observation" />
             </div>
 
-            <div className="flex items-center gap-1.5 text-xs text-[#626773] font-mono">
-              <Calendar className="w-3.5 h-3.5 text-[#626773]" />
+            <div className="flex items-center gap-1.5 text-xs text-[#626773] font-mono font-semibold">
+              <Calendar className="w-3.5 h-3.5 text-[#7257E8]" />
               <span>{topic.period}</span>
             </div>
           </div>
@@ -47,40 +49,40 @@ export const ExploreTopicView: React.FC<Props> = ({ topic, activeTab, onSelectTa
           </div>
 
           {/* Key Metrics Stats Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[#CDD0D5]">
-            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-indigo-100">
+            <div className="bg-white/90 p-3 rounded-xl border border-indigo-100/80 shadow-2xs">
               <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
-                <Database className="w-3.5 h-3.5 text-blue-600" />
+                <Database className="w-3.5 h-3.5 text-[#4C6FFF]" />
                 <span className="font-semibold">Publicaciones</span>
               </div>
-              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.publicationCount.toLocaleString()}</div>
+              <div className="text-lg font-extrabold font-mono text-[#292C32]">{topic.publicationCount.toLocaleString()}</div>
               <span className="text-[10px] text-[#626773]">Muestra analizada</span>
             </div>
 
-            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+            <div className="bg-white/90 p-3 rounded-xl border border-indigo-100/80 shadow-2xs">
               <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
-                <MessageSquare className="w-3.5 h-3.5 text-violet-600" />
+                <MessageSquare className="w-3.5 h-3.5 text-[#7257E8]" />
                 <span className="font-semibold">Comentarios</span>
               </div>
-              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.commentCount.toLocaleString()}</div>
+              <div className="text-lg font-extrabold font-mono text-[#292C32]">{topic.commentCount.toLocaleString()}</div>
               <span className="text-[10px] text-[#626773]">Reacciones de audiencia</span>
             </div>
 
-            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+            <div className="bg-white/90 p-3 rounded-xl border border-indigo-100/80 shadow-2xs">
               <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
                 <Compass className="w-3.5 h-3.5 text-emerald-600" />
                 <span className="font-semibold">Fuentes</span>
               </div>
-              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.sourceCount}</div>
+              <div className="text-lg font-extrabold font-mono text-[#292C32]">{topic.sourceCount}</div>
               <span className="text-[10px] text-[#626773]">Canales y medios</span>
             </div>
 
-            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+            <div className="bg-white/90 p-3 rounded-xl border border-indigo-100/80 shadow-2xs">
               <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
-                <Globe2 className="w-3.5 h-3.5 text-orange-600" />
+                <Globe2 className="w-3.5 h-3.5 text-[#F28C45]" />
                 <span className="font-semibold">Países</span>
               </div>
-              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.countries.length}</div>
+              <div className="text-lg font-extrabold font-mono text-[#292C32]">{topic.countries.length}</div>
               <span className="text-[10px] text-[#626773] truncate block">{topic.countries.slice(0, 3).join(', ')}...</span>
             </div>
           </div>
@@ -88,7 +90,7 @@ export const ExploreTopicView: React.FC<Props> = ({ topic, activeTab, onSelectTa
       </section>
 
       {/* Sub-Navigation Tabs */}
-      <nav className="flex items-center gap-1 border-b border-[#CDD0D5] overflow-x-auto pb-1 scrollbar-none">
+      <nav className="flex items-center gap-1.5 border-b border-indigo-200/60 overflow-x-auto pb-1.5 scrollbar-none">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -97,8 +99,8 @@ export const ExploreTopicView: React.FC<Props> = ({ topic, activeTab, onSelectTa
               onClick={() => onSelectTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0 cursor-pointer ${
                 isActive
-                  ? 'bg-blue-600 text-white font-bold shadow-xs'
-                  : 'text-[#626773] hover:text-[#292C32] hover:bg-slate-100'
+                  ? 'bg-gradient-to-r from-[#7257E8] to-[#4C6FFF] text-white font-bold shadow-sm shadow-indigo-500/20'
+                  : 'bg-white/60 hover:bg-white/90 text-[#626773] hover:text-[#292C32] border border-white/60'
               }`}
             >
               {tab.icon}

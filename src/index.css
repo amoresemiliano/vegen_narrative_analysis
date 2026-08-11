@@ -2,9 +2,11 @@
 
 @layer base {
   body {
-    background-color: #E7E8EB;
+    background: linear-gradient(135deg, #D4D7E5 0%, #DBDEEA 50%, #E1DFEA 100%);
+    background-attachment: fixed;
     color: #292C32;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
   }
 }
 
@@ -15,14 +17,28 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #E3E5E8;
+  background: rgba(210, 214, 228, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B0B4BC;
+  background: #A6ACBA;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9398A2;
+  background: #8B92A2;
 }
+
+/* Ambient glow utility classes */
+.ambient-glow-violet {
+  background: radial-gradient(circle, rgba(114, 87, 232, 0.14) 0%, rgba(114, 87, 232, 0) 70%);
+}
+
+.ambient-glow-blue {
+  background: radial-gradient(circle, rgba(76, 111, 255, 0.12) 0%, rgba(76, 111, 255, 0) 70%);
+}
+
+.ambient-glow-orange {
+  background: radial-gradient(circle, rgba(242, 140, 69, 0.10) 0%, rgba(242, 140, 69, 0) 70%);
+}
+

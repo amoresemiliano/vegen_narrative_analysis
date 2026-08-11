@@ -56,14 +56,14 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
   return (
     <div className="space-y-6">
       {/* Header & Filter Controls */}
-      <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-xl p-4 sm:p-5 space-y-4 shadow-2xs">
+      <div className="bg-white/80 backdrop-blur-md border border-white/90 rounded-2xl p-4 sm:p-5 space-y-4 shadow-sm">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div>
-            <h2 className="text-lg font-bold text-[#292C32] flex items-center gap-2">
-              <Filter className="w-5 h-5 text-blue-600" />
+            <h2 className="text-lg font-extrabold text-[#292C32] flex items-center gap-2">
+              <Filter className="w-5 h-5 text-[#4C6FFF]" />
               Publicaciones y muestra de fuentes analizadas
             </h2>
-            <p className="text-xs text-[#626773]">
+            <p className="text-xs text-[#626773] font-medium mt-0.5">
               Filtra e inspecciona publicaciones en plataformas digitales para evaluar encuadres y reacciones
             </p>
           </div>
@@ -72,7 +72,7 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
             <ObservationBadge type="observation" />
             <button
               onClick={toggleSelectAll}
-              className="px-3 py-1.5 bg-white hover:bg-slate-100 text-[#292C32] text-xs font-mono font-bold rounded-lg border border-[#CDD0D5] transition cursor-pointer shadow-2xs"
+              className="px-3.5 py-1.5 bg-white/90 hover:bg-white text-[#292C32] text-xs font-mono font-bold rounded-xl border border-indigo-200/80 transition cursor-pointer shadow-2xs"
             >
               {selectedPubIds.length === filteredPubs.length && filteredPubs.length > 0 ? 'Deseleccionar todo' : 'Seleccionar todo'}
             </button>
@@ -83,13 +83,13 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
           {/* Search input */}
           <div className="relative">
-            <Search className="w-4 h-4 text-[#626773] absolute left-3 top-3" />
+            <Search className="w-4 h-4 text-[#7257E8] absolute left-3 top-3" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Buscar titular o autor..."
-              className="w-full bg-white border border-[#CDD0D5] rounded-lg pl-9 pr-3 py-2 text-xs text-[#292C32] placeholder-[#626773] focus:outline-none focus:border-blue-600"
+              className="w-full bg-white/90 border border-indigo-100/80 rounded-xl pl-9 pr-3 py-2 text-xs text-[#292C32] placeholder-[#626773] focus:outline-none focus:border-[#7257E8] font-medium"
             />
           </div>
 
@@ -97,7 +97,7 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
           <select
             value={selectedPlatform}
             onChange={(e) => setSelectedPlatform(e.target.value)}
-            className="bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600 font-medium"
+            className="bg-white/90 border border-indigo-100/80 rounded-xl px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-[#7257E8] font-semibold cursor-pointer"
           >
             <option value="ALL">Todas las plataformas ({platforms.length})</option>
             {platforms.map((plat) => (
@@ -111,7 +111,7 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
           <select
             value={selectedCountry}
             onChange={(e) => setSelectedCountry(e.target.value)}
-            className="bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600 font-medium"
+            className="bg-white/90 border border-indigo-100/80 rounded-xl px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-[#7257E8] font-semibold cursor-pointer"
           >
             <option value="ALL">Todos los países ({countries.length})</option>
             {countries.map((c) => (
@@ -125,10 +125,10 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
           <button
             onClick={handleAnalyzeSelected}
             disabled={selectedPubIds.length === 0}
-            className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition cursor-pointer ${
               selectedPubIds.length > 0
-                ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-xs'
-                : 'bg-slate-200 text-slate-400 cursor-not-allowed border border-[#CDD0D5]'
+                ? 'bg-gradient-to-r from-[#7257E8] to-[#4C6FFF] hover:opacity-95 text-white shadow-xs'
+                : 'bg-slate-200/80 text-slate-400 cursor-not-allowed border border-slate-200'
             }`}
           >
             <Sparkles className="w-4 h-4" />
@@ -138,11 +138,11 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
 
         {/* Batch notice banner */}
         {showBatchNotice && (
-          <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900 flex items-center justify-between animate-fade-in">
+          <div className="p-3 bg-indigo-50/80 border border-indigo-200/80 rounded-xl text-xs text-indigo-950 flex items-center justify-between animate-fade-in font-medium">
             <span>
               <strong>Simulación de análisis por lote:</strong> Se generó un informe comparativo de encuadre para {selectedPubIds.length} publicación(es) seleccionada(s).
             </span>
-            <button onClick={() => setShowBatchNotice(false)} className="text-blue-700 font-mono text-[11px] underline font-bold">
+            <button onClick={() => setShowBatchNotice(false)} className="text-[#7257E8] font-mono text-[11px] underline font-bold cursor-pointer">
               Ocultar
             </button>
           </div>
@@ -158,29 +158,29 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
             <div
               key={pub.id}
               onClick={() => setActiveModalPub(pub)}
-              className={`group bg-white border rounded-xl p-4 sm:p-5 transition-all duration-200 cursor-pointer flex flex-col justify-between relative shadow-2xs hover:shadow-md ${
-                isSelected ? 'border-blue-600 bg-blue-50/50' : 'border-[#CDD0D5] hover:border-blue-400'
+              className={`group bg-white/90 border rounded-2xl p-4 sm:p-5 transition-all duration-200 cursor-pointer flex flex-col justify-between relative shadow-2xs hover:shadow-md ${
+                isSelected ? 'border-[#7257E8] bg-indigo-50/30 ring-1 ring-[#7257E8]' : 'border-indigo-100 hover:border-[#7257E8]'
               }`}
             >
               <div>
                 {/* Platform & Selection Header */}
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="px-2 py-0.5 rounded bg-[#F1F2F4] border border-[#CDD0D5] text-[10px] font-mono text-violet-800 font-bold">
+                    <span className="px-2 py-0.5 rounded-lg bg-indigo-50 border border-indigo-200/80 text-[10px] font-mono text-[#7257E8] font-extrabold">
                       {pub.sourcePlatform}
                     </span>
                     <span className="text-[10px] font-mono text-[#626773] flex items-center gap-1 font-semibold">
-                      <Globe2 className="w-3 h-3" />
+                      <Globe2 className="w-3 h-3 text-[#4C6FFF]" />
                       {pub.country}
                     </span>
                   </div>
 
                   <button
                     onClick={(e) => toggleSelect(pub.id, e)}
-                    className="text-[#626773] hover:text-blue-600 p-1 cursor-pointer"
+                    className="text-[#626773] hover:text-[#7257E8] p-1 cursor-pointer"
                   >
                     {isSelected ? (
-                      <CheckSquare className="w-4 h-4 text-blue-600" />
+                      <CheckSquare className="w-4 h-4 text-[#7257E8]" />
                     ) : (
                       <Square className="w-4 h-4 text-[#626773]" />
                     )}
@@ -188,24 +188,24 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-bold text-sm text-[#292C32] group-hover:text-blue-700 transition-colors line-clamp-2 mb-2">
+                <h3 className="font-extrabold text-sm text-[#292C32] group-hover:text-[#7257E8] transition-colors line-clamp-2 mb-2">
                   {pub.title}
                 </h3>
 
                 {/* Summary */}
-                <p className="text-xs text-[#626773] line-clamp-3 mb-3 leading-relaxed">
+                <p className="text-xs text-[#626773] line-clamp-3 mb-3 leading-relaxed font-medium">
                   {pub.summary}
                 </p>
               </div>
 
-              <div className="space-y-3 pt-3 border-t border-[#CDD0D5]">
+              <div className="space-y-3 pt-3 border-t border-indigo-100">
                 {/* Main Narrative & Tone */}
                 <div className="flex items-center justify-between text-[11px]">
-                  <span className="text-[#626773] flex items-center gap-1 truncate max-w-[200px] font-medium">
-                    <Layers className="w-3 h-3 text-violet-600 shrink-0" />
+                  <span className="text-[#626773] flex items-center gap-1 truncate max-w-[200px] font-semibold">
+                    <Layers className="w-3 h-3 text-[#7257E8] shrink-0" />
                     <span className="truncate">{pub.mainNarrativeTitle}</span>
                   </span>
-                  <span className="text-orange-800 font-mono text-[10px] bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200 font-bold shrink-0">
+                  <span className="text-[#F28C45] font-mono text-[10px] bg-orange-50 px-2 py-0.5 rounded-lg border border-orange-200/80 font-bold shrink-0">
                     {pub.predominantTone}
                   </span>
                 </div>
@@ -213,16 +213,16 @@ export const SourcesView: React.FC<Props> = ({ publications }) => {
                 {/* Footer Metrics */}
                 <div className="flex items-center justify-between text-xs text-[#626773] font-mono">
                   <div className="flex items-center gap-3">
-                    <span className="flex items-center gap-1 font-semibold text-[#292C32]">
-                      <MessageSquare className="w-3.5 h-3.5 text-violet-600" />
+                    <span className="flex items-center gap-1 font-bold text-[#292C32]">
+                      <MessageSquare className="w-3.5 h-3.5 text-[#7257E8]" />
                       {pub.commentCount.toLocaleString()}
                     </span>
-                    <span className="text-[10px] text-[#626773]">
+                    <span className="text-[10px] text-[#626773] font-semibold">
                       Alcance: {pub.engagementScore.toLocaleString()}
                     </span>
                   </div>
 
-                  <span className="text-[10px] text-blue-700 font-bold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                  <span className="text-[10px] text-[#7257E8] font-extrabold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                     Inspeccionar <ExternalLink className="w-3 h-3" />
                   </span>
                 </div>
