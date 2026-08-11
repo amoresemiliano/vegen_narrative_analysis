@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #E7E8EB;
+    color: #292C32;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+/* Custom scrollbar for research UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E3E5E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B0B4BC;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9398A2;
+}

@@ -15,18 +15,18 @@ export const NarrativeDnaView: React.FC<Props> = ({ narrative, allNarratives, on
 
   const compareNarrative = allNarratives.find((n) => n.id === compareNarrativeId);
 
-  // Map DNA dimensions for Radar Chart
+  // Map DNA dimensions for Radar Chart in Spanish
   const dnaDimensionsKeys = [
-    { key: 'institutionalDistrust', label: 'Inst. Distrust' },
-    { key: 'usVsThemLanguage', label: 'Us vs Them' },
-    { key: 'groupVictimization', label: 'Victimization' },
-    { key: 'perceivedThreat', label: 'Perceived Threat' },
-    { key: 'linguisticCertainty', label: 'Linguistic Certainty' },
-    { key: 'emotionalActivation', label: 'Emotional Activation' },
-    { key: 'anecdotalEvidence', label: 'Anecdotal Evidence' },
-    { key: 'conspiracyFraming', label: 'Conspiracy Framing' },
-    { key: 'hostility', label: 'Hostility' },
-    { key: 'collectiveIdentity', label: 'Collective Identity' },
+    { key: 'institutionalDistrust', label: 'Desconfianza inst.' },
+    { key: 'usVsThemLanguage', label: 'Nosotros vs Ellos' },
+    { key: 'groupVictimization', label: 'Victimización' },
+    { key: 'perceivedThreat', label: 'Amenaza percibida' },
+    { key: 'linguisticCertainty', label: 'Certeza lingüística' },
+    { key: 'emotionalActivation', label: 'Activación emocional' },
+    { key: 'anecdotalEvidence', label: 'Evidencia anecdótica' },
+    { key: 'conspiracyFraming', label: 'Encuadre conspirativo' },
+    { key: 'hostility', label: 'Hostilidad' },
+    { key: 'collectiveIdentity', label: 'Identidad colectiva' },
   ] as const;
 
   const radarData = dnaDimensionsKeys.map((item) => {
@@ -46,22 +46,22 @@ export const NarrativeDnaView: React.FC<Props> = ({ narrative, allNarratives, on
       <div className="flex flex-wrap items-center justify-between gap-3">
         <button
           onClick={onBack}
-          className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-mono rounded-xl border border-slate-800 transition flex items-center gap-2"
+          className="px-3.5 py-2 bg-white hover:bg-slate-100 text-[#292C32] text-xs font-mono font-bold rounded-xl border border-[#CDD0D5] transition flex items-center gap-2 cursor-pointer shadow-2xs"
         >
-          <ArrowLeft className="w-4 h-4 text-amber-400" />
-          <span>Back to All Narratives</span>
+          <ArrowLeft className="w-4 h-4 text-blue-600" />
+          <span>Volver a todas las narrativas</span>
         </button>
 
         {/* Compare Selector */}
         <div className="flex items-center gap-2">
-          <GitCompare className="w-4 h-4 text-indigo-400" />
-          <span className="text-xs text-slate-400 font-mono">Compare with:</span>
+          <GitCompare className="w-4 h-4 text-violet-600" />
+          <span className="text-xs text-[#626773] font-mono font-semibold">Comparar con:</span>
           <select
             value={compareNarrativeId}
             onChange={(e) => setCompareNarrativeId(e.target.value)}
-            className="bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-amber-300 focus:outline-none"
+            className="bg-white border border-[#CDD0D5] rounded-lg px-3 py-1.5 text-xs text-violet-800 font-bold focus:outline-none focus:border-blue-600"
           >
-            <option value="NONE">None (Single Narrative)</option>
+            <option value="NONE">Ninguna (Narrativa individual)</option>
             {allNarratives
               .filter((n) => n.id !== narrative.id)
               .map((n) => (
@@ -74,57 +74,57 @@ export const NarrativeDnaView: React.FC<Props> = ({ narrative, allNarratives, on
       </div>
 
       {/* Narrative DNA Title Banner */}
-      <section className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-3">
+      <section className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-6 shadow-2xs space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 text-xs font-mono font-bold">
+            <span className="px-2.5 py-1 rounded bg-violet-50 text-violet-800 border border-violet-200 text-xs font-mono font-bold">
               {narrative.code}
             </span>
             <ObservationBadge type="interpretation" />
           </div>
-          <span className="text-xs font-mono text-slate-400">
-            Prevalence in Sample: <strong className="text-amber-400">{narrative.prevalencePercentage}%</strong>
+          <span className="text-xs font-mono text-[#626773] font-semibold">
+            Prevalencia en la muestra: <strong className="text-violet-800 text-sm">{narrative.prevalencePercentage}%</strong>
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100">{narrative.title}</h1>
-        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{narrative.description}</p>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-[#292C32]">{narrative.title}</h1>
+        <p className="text-xs sm:text-sm text-[#626773] leading-relaxed">{narrative.description}</p>
       </section>
 
       {/* Narrative DNA Radar Chart & Dimensions Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Radar Chart */}
-        <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+        <div className="lg:col-span-7 bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 space-y-4 shadow-2xs">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-bold text-slate-100 text-sm sm:text-base flex items-center gap-2">
-                <Sliders className="w-5 h-5 text-amber-400" />
-                Narrative DNA Fingerprint
+              <h3 className="font-bold text-[#292C32] text-sm sm:text-base flex items-center gap-2">
+                <Sliders className="w-5 h-5 text-violet-600" />
+                Huella del ADN Narrativo
               </h3>
-              <p className="text-xs text-slate-400">10-dimensional profile of observed discourse structures</p>
+              <p className="text-xs text-[#626773]">Perfil de 10 dimensiones sobre estructuras discursivas observadas</p>
             </div>
           </div>
 
           <div className="h-80 w-full pt-2">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={radarData}>
-                <PolarGrid stroke="#334155" />
-                <PolarAngleAxis dataKey="dimension" stroke="#94a3b8" tick={{ fill: '#cbd5e1', fontSize: 10 }} />
-                <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#475569" tick={{ fontSize: 9 }} />
-                <Radar name={narrative.code} dataKey={narrative.code} stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.4} />
+                <PolarGrid stroke="#cdd0d5" />
+                <PolarAngleAxis dataKey="dimension" stroke="#626773" tick={{ fill: '#292C32', fontSize: 10, fontWeight: 600 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#94a3b8" tick={{ fontSize: 9 }} />
+                <Radar name={narrative.code} dataKey={narrative.code} stroke="#7c3aed" fill="#7c3aed" fillOpacity={0.4} />
                 {compareNarrative && (
-                  <Radar name={compareNarrative.code} dataKey={compareNarrative.code} stroke="#818cf8" fill="#818cf8" fillOpacity={0.3} />
+                  <Radar name={compareNarrative.code} dataKey={compareNarrative.code} stroke="#2563eb" fill="#2563eb" fillOpacity={0.3} />
                 )}
                 <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
-                <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', borderRadius: '8px', color: '#f8fafc', fontSize: '12px' }} />
+                <Tooltip contentStyle={{ backgroundColor: '#ffffff', borderColor: '#cdd0d5', borderRadius: '8px', color: '#292c32', fontSize: '12px' }} />
               </RadarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Dimension Breakdown Percentage Bars */}
-        <div className="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
-          <h3 className="font-bold text-slate-100 text-sm">Dimension Percentage Breakdown</h3>
+        <div className="lg:col-span-5 bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 space-y-4 shadow-2xs">
+          <h3 className="font-bold text-[#292C32] text-sm">Desglose porcentual por dimensión</h3>
 
           <div className="space-y-2.5 max-h-[340px] overflow-y-auto pr-1">
             {dnaDimensionsKeys.map((item) => {
@@ -134,14 +134,14 @@ export const NarrativeDnaView: React.FC<Props> = ({ narrative, allNarratives, on
               return (
                 <div key={item.key} className="space-y-1">
                   <div className="flex justify-between text-xs font-mono">
-                    <span className="text-slate-300 font-medium">{item.label}</span>
-                    <span className="text-amber-400 font-bold">{val1}%</span>
+                    <span className="text-[#292C32] font-semibold">{item.label}</span>
+                    <span className="text-violet-800 font-bold">{val1}%</span>
                   </div>
 
-                  <div className="h-2 w-full bg-slate-950 rounded-full overflow-hidden border border-slate-800 relative">
-                    <div className="h-full bg-amber-500 rounded-full" style={{ width: `${val1}%` }} />
+                  <div className="h-2.5 w-full bg-slate-200 rounded-full overflow-hidden border border-slate-300 relative">
+                    <div className="h-full bg-violet-600 rounded-full" style={{ width: `${val1}%` }} />
                     {val2 !== null && (
-                      <div className="h-full bg-indigo-500/80 rounded-full absolute top-0 left-0" style={{ width: `${val2}%` }} />
+                      <div className="h-full bg-blue-500/80 rounded-full absolute top-0 left-0" style={{ width: `${val2}%` }} />
                     )}
                   </div>
                 </div>
@@ -153,28 +153,28 @@ export const NarrativeDnaView: React.FC<Props> = ({ narrative, allNarratives, on
 
       {/* Associated Claims & Linguistic Patterns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
-          <h3 className="font-bold text-slate-100 text-sm flex items-center gap-2">
-            <FileText className="w-4 h-4 text-amber-400" />
-            Associated Claims in Content
+        <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 space-y-3 shadow-2xs">
+          <h3 className="font-bold text-[#292C32] text-sm flex items-center gap-2">
+            <FileText className="w-4 h-4 text-orange-600" />
+            Afirmaciones asociadas en el contenido
           </h3>
           <div className="space-y-2">
             {narrative.associatedClaims.map((claim, idx) => (
-              <div key={idx} className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-300">
+              <div key={idx} className="p-3 bg-white rounded-xl border border-[#CDD0D5] text-xs text-[#292C32] shadow-2xs">
                 • {claim}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
-          <h3 className="font-bold text-slate-100 text-sm flex items-center gap-2">
-            <Layers className="w-4 h-4 text-indigo-400" />
-            Typical Linguistic Patterns
+        <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 space-y-3 shadow-2xs">
+          <h3 className="font-bold text-[#292C32] text-sm flex items-center gap-2">
+            <Layers className="w-4 h-4 text-violet-600" />
+            Patrones lingüísticos típicos
           </h3>
           <div className="space-y-2">
             {narrative.typicalLinguisticPatterns.map((pat, idx) => (
-              <div key={idx} className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs text-amber-300 italic font-serif">
+              <div key={idx} className="p-3 bg-white rounded-xl border border-[#CDD0D5] text-xs text-violet-900 italic font-serif shadow-2xs">
                 "{pat}"
               </div>
             ))}
@@ -183,10 +183,10 @@ export const NarrativeDnaView: React.FC<Props> = ({ narrative, allNarratives, on
       </div>
 
       {/* DISCRETE DISCLAIMER as strictly requested in PANTALLA 7 */}
-      <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-400 flex items-center gap-2.5">
-        <Shield className="w-4 h-4 text-emerald-400 shrink-0" />
+      <div className="p-4 bg-white border border-[#CDD0D5] rounded-xl text-xs text-[#626773] flex items-center gap-2.5 shadow-2xs">
+        <Shield className="w-4 h-4 text-emerald-600 shrink-0" />
         <p className="leading-relaxed">
-          <strong className="text-slate-300">Methodological Disclaimer:</strong> These indicators describe patterns observed in the analyzed content. They do not represent psychological diagnoses or individual traits.
+          <strong className="text-[#292C32]">Aviso metodológico:</strong> Estos indicadores describen patrones observados en el contenido analizado. No representan diagnósticos psicológicos ni características individuales.
         </p>
       </div>
     </div>

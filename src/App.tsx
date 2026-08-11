@@ -61,7 +61,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950 antialiased flex flex-col">
+    <div className="min-h-screen bg-[#E7E8EB] text-[#292C32] font-sans selection:bg-blue-600 selection:text-white antialiased flex flex-col">
       {/* Navigation Header / Bar */}
       <Navigation
         activeView={activeView}

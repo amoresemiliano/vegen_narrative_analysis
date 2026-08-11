@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LibraryCollection } from '../../types';
-import { Library, Folder, BookOpen, Clock, Tag, ArrowRight, Bookmark } from 'lucide-react';
+import { Library, Clock, ArrowRight } from 'lucide-react';
 
 interface Props {
   collections: LibraryCollection[];
@@ -8,31 +8,37 @@ interface Props {
 }
 
 export const LibraryView: React.FC<Props> = ({ collections, onOpenTopic }) => {
-  const [activeTab, setActiveTab] = useState<string>('ALL');
+  const [activeTab, setActiveTab] = useState<string>('Todas');
 
-  const categories = ['ALL', 'Topics', 'Collections', 'Saved analyses'];
+  const categories = ['Todas', 'Temas', 'Colecciones', 'Análisis guardados'];
 
-  const filteredCollections = activeTab === 'ALL'
+  const categoryMap: Record<string, string> = {
+    'Temas': 'Topics',
+    'Colecciones': 'Collections',
+    'Análisis guardados': 'Saved analyses',
+  };
+
+  const filteredCollections = activeTab === 'Todas'
     ? collections
-    : collections.filter((c) => c.category === activeTab);
+    : collections.filter((c) => c.category === activeTab || c.category === categoryMap[activeTab]);
 
   return (
     <div className="space-y-6 pb-12">
       {/* Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+      <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 space-y-3 shadow-2xs">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <div>
-            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <Library className="w-5 h-5 text-amber-400" />
-              Saved Investigations & Collections Library
+            <h2 className="text-lg font-bold text-[#292C32] flex items-center gap-2">
+              <Library className="w-5 h-5 text-violet-600" />
+              Biblioteca de investigaciones y colecciones guardadas
             </h2>
-            <p className="text-xs text-slate-400">
-              Personal research workspace & bookmarked phenomenon collections
+            <p className="text-xs text-[#626773]">
+              Espacio personal de investigación y colecciones de fenómenos guardados
             </p>
           </div>
 
-          <span className="px-3 py-1 bg-slate-800 text-amber-300 text-xs font-mono rounded-lg border border-slate-700">
-            {collections.length} Saved Collections
+          <span className="px-3 py-1 bg-white text-violet-800 text-xs font-mono font-bold rounded-lg border border-[#CDD0D5] shadow-2xs">
+            {collections.length} Colecciones guardadas
           </span>
         </div>
 
@@ -42,10 +48,10 @@ export const LibraryView: React.FC<Props> = ({ collections, onOpenTopic }) => {
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition cursor-pointer ${
                 activeTab === cat
-                  ? 'bg-amber-400 text-slate-950 font-bold'
-                  : 'bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-blue-600 text-white font-bold shadow-2xs'
+                  : 'bg-white text-[#292C32] hover:text-blue-700 border border-[#CDD0D5]'
               }`}
             >
               {cat}
@@ -60,41 +66,41 @@ export const LibraryView: React.FC<Props> = ({ collections, onOpenTopic }) => {
           <div
             key={item.id}
             onClick={() => onOpenTopic(item.sampleTopicId || 'flat-earth-demo')}
-            className="group bg-slate-900 border border-slate-800 hover:border-amber-400/80 rounded-2xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between space-y-4 shadow-xl relative overflow-hidden"
+            className="group bg-white border border-[#CDD0D5] hover:border-violet-500 rounded-2xl p-6 transition-all duration-300 cursor-pointer flex flex-col justify-between space-y-4 shadow-2xs hover:shadow-md relative overflow-hidden"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs font-mono">
-                <span className="px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 text-[10px] font-bold">
+                <span className="px-2.5 py-0.5 rounded bg-violet-50 text-violet-800 border border-violet-200 text-[10px] font-bold">
                   {item.category}
                 </span>
-                <span className="text-slate-400 flex items-center gap-1">
+                <span className="text-[#626773] flex items-center gap-1 font-semibold">
                   <Clock className="w-3 h-3" />
                   {item.lastUpdated}
                 </span>
               </div>
 
-              <h3 className="text-lg font-bold text-slate-100 group-hover:text-amber-300 transition-colors">
+              <h3 className="text-lg font-bold text-[#292C32] group-hover:text-violet-700 transition-colors">
                 {item.title}
               </h3>
 
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-[#626773] leading-relaxed">
                 {item.description}
               </p>
             </div>
 
-            <div className="space-y-3 pt-3 border-t border-slate-800">
+            <div className="space-y-3 pt-3 border-t border-[#CDD0D5]">
               <div className="flex flex-wrap gap-1.5">
                 {item.tags.map((tag, idx) => (
-                  <span key={idx} className="px-2 py-0.5 rounded bg-slate-950 text-[10px] font-mono text-slate-400 border border-slate-800">
+                  <span key={idx} className="px-2 py-0.5 rounded bg-[#F1F2F4] text-[10px] font-mono text-[#292C32] border border-[#CDD0D5] font-semibold">
                     #{tag}
                   </span>
                 ))}
               </div>
 
-              <div className="flex items-center justify-between text-xs text-amber-400 font-medium font-mono pt-1">
-                <span>{item.itemCount.toLocaleString()} Entries</span>
+              <div className="flex items-center justify-between text-xs text-blue-700 font-bold font-mono pt-1">
+                <span>{item.itemCount.toLocaleString()} Elementos</span>
                 <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform font-bold">
-                  <span>Re-open Workspace</span>
+                  <span>Reabrir espacio</span>
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </div>

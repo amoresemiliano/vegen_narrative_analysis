@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ManualAnalysisResult } from '../../types';
 import { ObservationBadge } from '../ObservationBadge';
-import { Cpu, Sparkles, FileText, MessageSquare, AlertCircle, RefreshCw, BarChart2, Shield } from 'lucide-react';
+import { Cpu, Sparkles, FileText, MessageSquare, RefreshCw, Shield } from 'lucide-react';
 
 export const AnalyzePublicationView: React.FC = () => {
   const [url, setUrl] = useState('');
@@ -21,10 +21,10 @@ export const AnalyzePublicationView: React.FC = () => {
     setCountry('Argentina');
     setDate('2026-08-04');
     setText(
-      'In this field experiment, we shot a 500mW green laser across 28km over Lake Nahuel Huapi. According to globe math (8 inches per mile squared), the target should be hidden behind 45 meters of water curvature. Instead, the sensor recorded the pulse directly. Why does textbook physics ignore atmospheric field observations?'
+      'En este experimento de campo, dispararemos un láser verde de 500mW a lo largo de 28 km sobre el lago Nahuel Huapi. Según los cálculos de la curvatura terrestre oficial (8 pulgadas por milla al cuadrado), el objetivo debería quedar oculto tras 45 metros de curvatura de agua. Sin embargo, el sensor registró el pulso directamente. ¿Por qué la física convencional ignora las observaciones empíricas en terreno?'
     );
     setCommentsText(
-      'Finally someone does a real experiment instead of trusting NASA artwork!\nLight refraction in cooler air layers near water surface explains this completely.\nThey hide this because curvature math collapses once you measure long lakes.\nWhat laser model did you use? Did you calibrate for elevation at both shores?\nAnother fake video, stop tricking naive viewers.\nI tested this in Lake Titicaca and observed identical non-curvature results.'
+      '¡Al fin alguien realiza un experimento real en lugar de confiar en renders de la NASA!\nLa refracción de la luz en capas de aire frío sobre la superficie del agua explica esto totalmente.\nOcultan esto porque las matemáticas de la curvatura colapsan al medir lagos extensos.\n¿Qué modelo de láser utilizaste? ¿Calibraste la elevación en ambas orillas?\nOtro video engañoso, dejen de confundir a la gente.\nProbé esto en el lago Titicaca y observé resultados idénticos sin curvatura detectable.'
     );
   };
 
@@ -38,32 +38,32 @@ export const AnalyzePublicationView: React.FC = () => {
       const commentLines = commentsText.split('\n').filter((l) => l.trim().length > 0);
 
       const mockResult: ManualAnalysisResult = {
-        url: url || 'https://example.com/publication_sample',
-        source: source || 'Digital Outlets',
-        author: author || 'Sample Creator',
-        country: country || 'International',
+        url: url || 'https://ejemplo.com/muestra_publicacion',
+        source: source || 'Medios digitales',
+        author: author || 'Creador de muestra',
+        country: country || 'Internacional',
         date: date || '2026-08-05',
-        text: text || 'Sample analyzed content',
+        text: text || 'Contenido analizado de muestra',
         commentsAnalyzedCount: commentLines.length > 0 ? commentLines.length : 12,
         contentAnalysis: {
-          summary: 'The publication presents an empirical laser field test over long water surfaces to question official terrestrial curvature models.',
-          mainTopic: 'Empirical Skepticism & Alternative Geophysics',
-          keywords: ['Laser test', 'Curvature math', 'Nahuel Huapi', 'Field experiment', 'Sensory proof', 'Textbook physics'],
-          entities: ['NASA', 'Lake Nahuel Huapi', 'Globe Geometry Model'],
-          apparentIntent: 'Challenge academic consensus by appealing to direct sensory observation and empirical field tests.',
-          targetAudience: 'Individuals harboring institutional skepticism and interest in alternative cosmological theories.',
-          tone: 'Inquisitive, Assertive, & Epistemically Self-Reliant',
-          emotionalLanguage: 'Language emphasizing empirical awakening vs perceived academic dogmatism.',
-          framing: 'Empirical Observation vs. Institutional Authority framing',
+          summary: 'La publicación presenta una prueba láser de campo sobre superficies de agua extensas para cuestionar modelos convencionales de curvatura terrestre.',
+          mainTopic: 'Escepticismo empírico y geofísica alternativa',
+          keywords: ['Prueba láser', 'Cálculo de curvatura', 'Nahuel Huapi', 'Experimento de campo', 'Evidencia sensorial', 'Física académica'],
+          entities: ['NASA', 'Lago Nahuel Huapi', 'Modelo geométrico del globo'],
+          apparentIntent: 'Cuestionar el consenso académico apelando a la observación sensorial directa y pruebas empíricas de campo.',
+          targetAudience: 'Personas con escepticismo institucional y preferencia por explicaciones alternativas.',
+          tone: 'Inquisitivo, asertivo y de auto-confianza epistémica',
+          emotionalLanguage: 'Lenguaje que enfatiza la revelación empírica frente al dogmatismo percibido.',
+          framing: 'Encuadre de Observación Empírica vs. Autoridad Institucional',
           keyClaims: [
-            'Target laser remains visible at 28km without predicted 45m drop',
-            'Academic physics curricula ignore non-globe laser field results',
-            'Direct sensory measurement supersedes theoretical mathematical models'
+            'El láser sigue siendo visible a 28 km sin la caída prevista de 45 m',
+            'La física académica ignora los experimentos láser en superficies acuáticas',
+            'La medición directa prevalece sobre los modelos teóricos'
           ],
           relevantLinguisticPatterns: [
-            '"Why does textbook physics ignore..."',
-            '"Test it yourself instead of trusting..."',
-            '"According to their calculations..."'
+            '"¿Por qué la física convencional ignora..."',
+            '"Compruébalo tú mismo en lugar de confiar..."',
+            '"Según sus propios cálculos..."'
           ]
         },
         audienceReaction: {
@@ -91,92 +91,92 @@ export const AnalyzePublicationView: React.FC = () => {
   return (
     <div className="space-y-8 pb-12">
       {/* Header Banner */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3">
+      <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-6 space-y-3 shadow-2xs">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <div className="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg border border-indigo-500/20">
+            <div className="p-2 bg-violet-100 text-violet-700 rounded-lg border border-violet-200">
               <Cpu className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-slate-100">Manual Publication & Reaction Analyzer</h1>
-              <p className="text-xs text-slate-400">Input custom text and comments to simulate deep discourse analysis</p>
+              <h1 className="text-xl font-bold text-[#292C32]">Analizador manual de publicaciones y reacciones</h1>
+              <p className="text-xs text-[#626773]">Ingresa texto y comentarios personalizados para simular el análisis del discurso</p>
             </div>
           </div>
 
           <button
             onClick={handleLoadPreset}
-            className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-mono rounded-lg border border-slate-700 transition flex items-center gap-1.5"
+            className="px-3.5 py-1.5 bg-white hover:bg-slate-100 text-violet-800 text-xs font-mono font-bold rounded-lg border border-[#CDD0D5] transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Load Sample Viral Post</span>
+            <Sparkles className="w-3.5 h-3.5 text-violet-600" />
+            <span>Cargar publicación viral de ejemplo</span>
           </button>
         </div>
       </div>
 
       {/* Form Input */}
-      <form onSubmit={handleAnalyze} className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-200 font-mono flex items-center gap-2">
-          <FileText className="w-4 h-4 text-amber-400" />
-          Publication Details
+      <form onSubmit={handleAnalyze} className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-6 space-y-6 shadow-2xs">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-[#292C32] font-mono flex items-center gap-2">
+          <FileText className="w-4 h-4 text-orange-600" />
+          Detalles de la publicación
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div>
-            <label className="text-xs text-slate-400 block mb-1">URL (Simulated Link)</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">URL (Enlace simulado)</label>
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://youtube.com/watch?v=..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-400 block mb-1">Source Platform</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">Plataforma de origen</label>
             <select
               value={source}
               onChange={(e) => setSource(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600 font-medium"
             >
               <option value="YouTube">YouTube</option>
               <option value="X (Twitter)">X (Twitter)</option>
               <option value="TikTok">TikTok</option>
               <option value="Reddit">Reddit</option>
-              <option value="News Blog">News Blog</option>
+              <option value="Medio digital">Medio digital</option>
               <option value="Telegram">Telegram</option>
             </select>
           </div>
 
           <div>
-            <label className="text-xs text-slate-400 block mb-1">Author / Creator</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">Autor / Creador</label>
             <input
               type="text"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
-              placeholder="e.g. @HorizonteLibre"
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+              placeholder="ej. @HorizonteLibre"
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-400 block mb-1">Country</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">País</label>
             <input
               type="text"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              placeholder="e.g. Argentina"
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+              placeholder="ej. Argentina"
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-400 block mb-1">Publication Date</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">Fecha de publicación</label>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg px-3 py-2 text-xs text-[#292C32] focus:outline-none focus:border-blue-600"
             />
           </div>
         </div>
@@ -184,24 +184,24 @@ export const AnalyzePublicationView: React.FC = () => {
         {/* Text Areas */}
         <div className="space-y-4">
           <div>
-            <label className="text-xs text-slate-400 block mb-1">Publication Text / Transcript</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">Texto / Transcripción de la publicación</label>
             <textarea
               rows={3}
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Paste main article, post text, or transcript..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-100 placeholder-slate-400 focus:outline-none focus:border-amber-400"
+              placeholder="Pega el texto del artículo, publicación o transcripción..."
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg p-3 text-xs text-[#292C32] placeholder-[#626773] focus:outline-none focus:border-blue-600"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-400 block mb-1">Audience Comments (One per line)</label>
+            <label className="text-xs text-[#626773] block mb-1 font-semibold">Comentarios de la audiencia (Uno por línea)</label>
             <textarea
               rows={4}
               value={commentsText}
               onChange={(e) => setCommentsText(e.target.value)}
-              placeholder="Paste sample comments line by line..."
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-slate-100 placeholder-slate-400 focus:outline-none focus:border-amber-400"
+              placeholder="Pega comentarios de muestra línea por línea..."
+              className="w-full bg-white border border-[#CDD0D5] rounded-lg p-3 text-xs text-[#292C32] placeholder-[#626773] focus:outline-none focus:border-blue-600"
             />
           </div>
         </div>
@@ -209,17 +209,17 @@ export const AnalyzePublicationView: React.FC = () => {
         <button
           type="submit"
           disabled={isAnalyzing}
-          className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-lg"
+          className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-xs cursor-pointer"
         >
           {isAnalyzing ? (
             <>
               <RefreshCw className="w-4 h-4 animate-spin" />
-              <span>Running Narrative Engine Analysis...</span>
+              <span>Ejecutando análisis del motor de narrativas...</span>
             </>
           ) : (
             <>
               <Sparkles className="w-4 h-4" />
-              <span>Analyze Publication</span>
+              <span>Analizar publicación</span>
             </>
           )}
         </button>
@@ -228,10 +228,10 @@ export const AnalyzePublicationView: React.FC = () => {
       {/* Analysis Output Result */}
       {result && (
         <div className="space-y-8 animate-fade-in pt-4">
-          <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-400 flex items-center justify-between">
+          <div className="p-4 bg-white border border-[#CDD0D5] rounded-xl text-xs text-[#626773] flex items-center justify-between shadow-2xs">
             <span className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-emerald-400 shrink-0" />
-              <strong>Ethical Notice:</strong> Evaluates discourse & audience patterns in sample text. Does NOT diagnose individuals.
+              <Shield className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span><strong className="text-[#292C32]">Aviso ético:</strong> Evalúa patrones en el texto y comentarios de la muestra. No realiza diagnósticos individuales.</span>
             </span>
             <ObservationBadge type="interpretation" />
           </div>
@@ -239,38 +239,38 @@ export const AnalyzePublicationView: React.FC = () => {
           {/* TWO MAIN BLOCKS as required: CONTENT ANALYSIS & AUDIENCE REACTION */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* BLOCK 1: CONTENT ANALYSIS */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-6 space-y-5 shadow-2xs">
+              <div className="flex items-center justify-between border-b border-[#CDD0D5] pb-3">
                 <div className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-amber-400" />
-                  <h3 className="font-bold text-slate-100 text-base">Content Analysis</h3>
+                  <FileText className="w-5 h-5 text-orange-600" />
+                  <h3 className="font-bold text-[#292C32] text-base">Análisis del contenido</h3>
                 </div>
                 <ObservationBadge type="observation" />
               </div>
 
               <div className="space-y-3 text-xs">
                 <div>
-                  <span className="text-slate-400 block font-mono">Summary</span>
-                  <p className="text-slate-200 mt-0.5">{result.contentAnalysis.summary}</p>
+                  <span className="text-[#626773] block font-mono font-bold">Resumen</span>
+                  <p className="text-[#292C32] mt-0.5">{result.contentAnalysis.summary}</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
-                    <span className="text-slate-400 block font-mono text-[10px]">Main Topic</span>
-                    <span className="font-semibold text-slate-200">{result.contentAnalysis.mainTopic}</span>
+                  <div className="p-2.5 bg-white rounded-lg border border-[#CDD0D5] shadow-2xs">
+                    <span className="text-[#626773] block font-mono text-[10px] font-semibold">Tema principal</span>
+                    <span className="font-bold text-[#292C32]">{result.contentAnalysis.mainTopic}</span>
                   </div>
 
-                  <div className="p-2.5 bg-slate-950 rounded-lg border border-slate-800">
-                    <span className="text-slate-400 block font-mono text-[10px]">Tone</span>
-                    <span className="font-semibold text-amber-300">{result.contentAnalysis.tone}</span>
+                  <div className="p-2.5 bg-white rounded-lg border border-[#CDD0D5] shadow-2xs">
+                    <span className="text-[#626773] block font-mono text-[10px] font-semibold">Tono</span>
+                    <span className="font-bold text-violet-800">{result.contentAnalysis.tone}</span>
                   </div>
                 </div>
 
                 <div>
-                  <span className="text-slate-400 block font-mono mb-1">Keywords</span>
+                  <span className="text-[#626773] block font-mono font-bold mb-1">Palabras clave</span>
                   <div className="flex flex-wrap gap-1.5">
                     {result.contentAnalysis.keywords.map((kw, idx) => (
-                      <span key={idx} className="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 font-mono text-[11px] text-slate-300">
+                      <span key={idx} className="px-2 py-0.5 rounded bg-white border border-[#CDD0D5] font-mono text-[11px] text-[#292C32] font-semibold">
                         {kw}
                       </span>
                     ))}
@@ -278,17 +278,17 @@ export const AnalyzePublicationView: React.FC = () => {
                 </div>
 
                 <div>
-                  <span className="text-slate-400 block font-mono mb-1">Apparent Intent & Framing</span>
-                  <p className="p-2.5 bg-slate-950 rounded-lg border border-slate-800 text-slate-300">
+                  <span className="text-[#626773] block font-mono font-bold mb-1">Intención aparente y encuadre</span>
+                  <p className="p-2.5 bg-white rounded-lg border border-[#CDD0D5] text-[#292C32] shadow-2xs">
                     {result.contentAnalysis.apparentIntent}
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-slate-400 block font-mono mb-1">Key Observable Claims</span>
+                  <span className="text-[#626773] block font-mono font-bold mb-1">Afirmaciones observables clave</span>
                   <div className="space-y-1.5">
                     {result.contentAnalysis.keyClaims.map((claim, idx) => (
-                      <div key={idx} className="p-2 bg-slate-950 rounded border border-slate-800/80 text-slate-300">
+                      <div key={idx} className="p-2 bg-white rounded border border-[#CDD0D5] text-[#292C32] shadow-2xs">
                         • {claim}
                       </div>
                     ))}
@@ -298,57 +298,57 @@ export const AnalyzePublicationView: React.FC = () => {
             </div>
 
             {/* BLOCK 2: AUDIENCE REACTION */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-6 space-y-5 shadow-2xs">
+              <div className="flex items-center justify-between border-b border-[#CDD0D5] pb-3">
                 <div className="flex items-center gap-2">
-                  <MessageSquare className="w-5 h-5 text-indigo-400" />
-                  <h3 className="font-bold text-slate-100 text-base">Audience Reaction ({result.commentsAnalyzedCount} Comments)</h3>
+                  <MessageSquare className="w-5 h-5 text-violet-600" />
+                  <h3 className="font-bold text-[#292C32] text-base">Reacciones de la audiencia ({result.commentsAnalyzedCount} Comentarios)</h3>
                 </div>
                 <ObservationBadge type="correlation" />
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-1">
-                  <span className="text-slate-400 font-mono text-[10px] block">Agreement vs Disagreement</span>
+                <div className="p-3 bg-white rounded-lg border border-[#CDD0D5] space-y-1 shadow-2xs">
+                  <span className="text-[#626773] font-mono text-[10px] block font-semibold">Acuerdo vs Desacuerdo</span>
                   <div className="flex justify-between font-mono font-bold">
-                    <span className="text-emerald-400">{result.audienceReaction.agreement}% Agree</span>
-                    <span className="text-rose-400">{result.audienceReaction.disagreement}% Disagree</span>
+                    <span className="text-emerald-700">{result.audienceReaction.agreement}% Acuerdo</span>
+                    <span className="text-rose-700">{result.audienceReaction.disagreement}% Desacuerdo</span>
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-1">
-                  <span className="text-slate-400 font-mono text-[10px] block">Distrust Level</span>
-                  <span className="text-amber-400 font-mono font-bold text-base block">{result.audienceReaction.distrust}%</span>
+                <div className="p-3 bg-white rounded-lg border border-[#CDD0D5] space-y-1 shadow-2xs">
+                  <span className="text-[#626773] font-mono text-[10px] block font-semibold">Nivel de desconfianza</span>
+                  <span className="text-orange-700 font-mono font-bold text-base block">{result.audienceReaction.distrust}%</span>
                 </div>
               </div>
 
               <div className="space-y-2 pt-2 text-xs">
-                <span className="text-slate-400 font-mono block">Reaction Category Breakdown</span>
+                <span className="text-[#626773] font-mono block font-bold">Desglose por categoría de reacción</span>
 
                 <div className="grid grid-cols-2 gap-2 font-mono">
-                  <div className="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between">
-                    <span className="text-slate-300">Validation:</span>
-                    <span className="font-bold text-amber-300">{result.audienceReaction.validation}%</span>
+                  <div className="p-2 bg-white rounded border border-[#CDD0D5] flex justify-between shadow-2xs">
+                    <span className="text-[#626773]">Validación:</span>
+                    <span className="font-bold text-violet-800">{result.audienceReaction.validation}%</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between">
-                    <span className="text-slate-300">Rejection:</span>
-                    <span className="font-bold text-rose-400">{result.audienceReaction.rejection}%</span>
+                  <div className="p-2 bg-white rounded border border-[#CDD0D5] flex justify-between shadow-2xs">
+                    <span className="text-[#626773]">Rechazo:</span>
+                    <span className="font-bold text-rose-700">{result.audienceReaction.rejection}%</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between">
-                    <span className="text-slate-300">Hostility:</span>
-                    <span className="font-bold text-rose-500">{result.audienceReaction.hostility}%</span>
+                  <div className="p-2 bg-white rounded border border-[#CDD0D5] flex justify-between shadow-2xs">
+                    <span className="text-[#626773]">Hostilidad:</span>
+                    <span className="font-bold text-rose-800">{result.audienceReaction.hostility}%</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between">
-                    <span className="text-slate-300">Ridicule:</span>
-                    <span className="font-bold text-indigo-400">{result.audienceReaction.ridicule}%</span>
+                  <div className="p-2 bg-white rounded border border-[#CDD0D5] flex justify-between shadow-2xs">
+                    <span className="text-[#626773]">Ridiculización:</span>
+                    <span className="font-bold text-violet-700">{result.audienceReaction.ridicule}%</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between">
-                    <span className="text-slate-300">Uncertainty:</span>
-                    <span className="font-bold text-cyan-400">{result.audienceReaction.uncertainty}%</span>
+                  <div className="p-2 bg-white rounded border border-[#CDD0D5] flex justify-between shadow-2xs">
+                    <span className="text-[#626773]">Incertidumbre:</span>
+                    <span className="font-bold text-blue-700">{result.audienceReaction.uncertainty}%</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between">
-                    <span className="text-slate-300">Questions:</span>
-                    <span className="font-bold text-slate-300">{result.audienceReaction.questions}%</span>
+                  <div className="p-2 bg-white rounded border border-[#CDD0D5] flex justify-between shadow-2xs">
+                    <span className="text-[#626773]">Preguntas:</span>
+                    <span className="font-bold text-[#292C32]">{result.audienceReaction.questions}%</span>
                   </div>
                 </div>
               </div>

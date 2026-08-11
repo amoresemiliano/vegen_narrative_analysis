@@ -16,14 +16,14 @@ export interface TopicResearch {
   countries: string[];
   temperature: {
     intensityScore: number; // 0 - 100
-    intensityLabel: 'Low' | 'Moderate' | 'High' | 'Critical';
+    intensityLabel: 'Baja' | 'Moderada' | 'Alta' | 'Crítica';
     predominantReaction: string;
-    polarizationLevel: 'Low' | 'Moderate' | 'High' | 'Extreme';
-    emotionalActivation: 'Low' | 'Moderate' | 'High' | 'Extreme';
+    polarizationLevel: 'Baja' | 'Moderada' | 'Alta' | 'Extrema';
+    emotionalActivation: 'Baja' | 'Moderada' | 'Alta' | 'Extrema';
     distrustLevel: number; // 0 - 100
   };
   keywords: { word: string; count: number; sentiment: 'neutral' | 'negative' | 'positive' }[];
-  entities: { name: string; type: 'Organization' | 'Person' | 'Concept' | 'Location'; mentions: number }[];
+  entities: { name: string; type: 'Organización' | 'Persona' | 'Concepto' | 'Ubicación'; mentions: number }[];
   emotions: { emotion: string; percentage: number; color: string }[];
   sentimentBreakdown: { positive: number; neutral: number; negative: number };
   temporalData: { date: string; volume: number; sentimentIndex: number; polarizationIndex: number }[];
@@ -32,7 +32,7 @@ export interface TopicResearch {
 export interface Publication {
   id: string;
   topicId: string;
-  sourcePlatform: 'X (Twitter)' | 'YouTube' | 'TikTok' | 'Reddit' | 'News Blog' | 'Telegram' | 'Podcast';
+  sourcePlatform: 'X (Twitter)' | 'YouTube' | 'TikTok' | 'Reddit' | 'Blog de Noticias' | 'Telegram' | 'Pódcast';
   author: string;
   authorHandle: string;
   country: string;
@@ -43,7 +43,7 @@ export interface Publication {
   fullText?: string;
   url: string;
   commentCount: number;
-  engagementScore: number; // e.g., 45200
+  engagementScore: number;
   mainNarrativeId: string;
   mainNarrativeTitle: string;
   predominantTone: string;
@@ -66,7 +66,7 @@ export interface NarrativeDnaDimensions {
 
 export interface Narrative {
   id: string;
-  code: string; // e.g. "NARRATIVE 01"
+  code: string; // e.g. "NARRATIVA 01"
   title: string;
   description: string;
   prevalencePercentage: number;
@@ -85,7 +85,7 @@ export interface CommentReaction {
   text: string;
   platform: string;
   author: string;
-  category: 'Support' | 'Agreement' | 'Disagreement' | 'Rejection' | 'Ridicule' | 'Hostility' | 'Indignation' | 'Distrust' | 'Fear' | 'Anger' | 'Uncertainty' | 'Questions';
+  category: string;
   emotionalIntensity: number; // 1-10
   linguisticMarkers: string[];
   date: string;
@@ -95,7 +95,7 @@ export interface Connection {
   id: string;
   targetTopic: string;
   connectionStrength: number; // 0 - 100
-  relationCategory: string; // e.g., "Epistemic Shared Pattern"
+  relationCategory: string; // e.g., "Patrón epistémico compartido"
   description: string;
   whyConnected: {
     sharedKeywords: string[];
@@ -148,7 +148,7 @@ export interface ManualAnalysisResult {
 export interface LibraryCollection {
   id: string;
   title: string;
-  category: 'Topics' | 'Sources' | 'Creators' | 'Saved analyses' | 'Collections';
+  category: string;
   itemCount: number;
   lastUpdated: string;
   description: string;

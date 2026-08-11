@@ -1,6 +1,6 @@
 import React from 'react';
 import { TopicResearch, ExploreTab } from '../../types';
-import { Compass, FileText, MessageSquare, Globe2, Calendar, Database, Layers, Flame, Share2, AlertCircle } from 'lucide-react';
+import { Compass, FileText, MessageSquare, Globe2, Calendar, Database, Layers, Share2 } from 'lucide-react';
 import { ObservationBadge } from '../ObservationBadge';
 
 interface Props {
@@ -12,96 +12,93 @@ interface Props {
 
 export const ExploreTopicView: React.FC<Props> = ({ topic, activeTab, onSelectTab, children }) => {
   const tabs: { id: ExploreTab; label: string; icon: React.ReactNode }[] = [
-    { id: 'overview', label: 'Overview', icon: <Compass className="w-4 h-4" /> },
-    { id: 'sources', label: 'Sources', icon: <FileText className="w-4 h-4" /> },
-    { id: 'narratives', label: 'Narratives', icon: <Layers className="w-4 h-4" /> },
-    { id: 'reactions', label: 'Reactions', icon: <MessageSquare className="w-4 h-4" /> },
-    { id: 'connections', label: 'Connections', icon: <Share2 className="w-4 h-4" /> },
+    { id: 'overview', label: 'Resumen general', icon: <Compass className="w-4 h-4" /> },
+    { id: 'sources', label: 'Fuentes', icon: <FileText className="w-4 h-4" /> },
+    { id: 'narratives', label: 'Narrativas', icon: <Layers className="w-4 h-4" /> },
+    { id: 'reactions', label: 'Reacciones', icon: <MessageSquare className="w-4 h-4" /> },
+    { id: 'connections', label: 'Conexiones', icon: <Share2 className="w-4 h-4" /> },
   ];
 
   return (
     <div className="space-y-6 pb-12">
       {/* Research Topic Header Card */}
-      <section className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
-        {/* Subtle decorative glow */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-
+      <section className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-5 sm:p-7 shadow-xs relative overflow-hidden">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 text-[10px] font-mono font-bold uppercase tracking-wider">
-                Active Investigation Workspace
+              <span className="px-2.5 py-1 rounded bg-violet-50 text-violet-800 border border-violet-200 text-[10px] font-mono font-bold uppercase tracking-wider">
+                Espacio de investigación activo
               </span>
               <ObservationBadge type="observation" />
             </div>
 
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono">
-              <Calendar className="w-3.5 h-3.5 text-slate-400" />
+            <div className="flex items-center gap-1.5 text-xs text-[#626773] font-mono">
+              <Calendar className="w-3.5 h-3.5 text-[#626773]" />
               <span>{topic.period}</span>
             </div>
           </div>
 
           <div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#292C32] tracking-tight font-sans">
               {topic.name}
             </h1>
-            <p className="text-sm text-slate-300 font-medium mt-1">{topic.subtitle}</p>
-            <p className="text-xs text-slate-400 mt-2 max-w-3xl leading-relaxed">{topic.description}</p>
+            <p className="text-sm text-[#292C32] font-semibold mt-1">{topic.subtitle}</p>
+            <p className="text-xs text-[#626773] mt-2 max-w-3xl leading-relaxed">{topic.description}</p>
           </div>
 
           {/* Key Metrics Stats Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-slate-800">
-            <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800/80">
-              <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-0.5">
-                <Database className="w-3.5 h-3.5 text-amber-400" />
-                <span>Publications</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-[#CDD0D5]">
+            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+              <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
+                <Database className="w-3.5 h-3.5 text-blue-600" />
+                <span className="font-semibold">Publicaciones</span>
               </div>
-              <div className="text-lg font-bold font-mono text-slate-100">{topic.publicationCount.toLocaleString()}</div>
-              <span className="text-[10px] text-slate-400">Analyzed sample</span>
+              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.publicationCount.toLocaleString()}</div>
+              <span className="text-[10px] text-[#626773]">Muestra analizada</span>
             </div>
 
-            <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800/80">
-              <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-0.5">
-                <MessageSquare className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Comments</span>
+            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+              <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
+                <MessageSquare className="w-3.5 h-3.5 text-violet-600" />
+                <span className="font-semibold">Comentarios</span>
               </div>
-              <div className="text-lg font-bold font-mono text-slate-100">{topic.commentCount.toLocaleString()}</div>
-              <span className="text-[10px] text-slate-400">Audience reactions</span>
+              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.commentCount.toLocaleString()}</div>
+              <span className="text-[10px] text-[#626773]">Reacciones de audiencia</span>
             </div>
 
-            <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800/80">
-              <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-0.5">
-                <Compass className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Sources</span>
+            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+              <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
+                <Compass className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="font-semibold">Fuentes</span>
               </div>
-              <div className="text-lg font-bold font-mono text-slate-100">{topic.sourceCount}</div>
-              <span className="text-[10px] text-slate-400">Channels & outlets</span>
+              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.sourceCount}</div>
+              <span className="text-[10px] text-[#626773]">Canales y medios</span>
             </div>
 
-            <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800/80">
-              <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-0.5">
-                <Globe2 className="w-3.5 h-3.5 text-rose-400" />
-                <span>Countries</span>
+            <div className="bg-white p-3 rounded-xl border border-[#CDD0D5]">
+              <div className="flex items-center gap-1.5 text-[#626773] text-xs mb-0.5">
+                <Globe2 className="w-3.5 h-3.5 text-orange-600" />
+                <span className="font-semibold">Países</span>
               </div>
-              <div className="text-lg font-bold font-mono text-slate-100">{topic.countries.length}</div>
-              <span className="text-[10px] text-slate-400 truncate block">{topic.countries.slice(0, 3).join(', ')}...</span>
+              <div className="text-lg font-bold font-mono text-[#292C32]">{topic.countries.length}</div>
+              <span className="text-[10px] text-[#626773] truncate block">{topic.countries.slice(0, 3).join(', ')}...</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Sub-Navigation Tabs */}
-      <nav className="flex items-center gap-1 border-b border-slate-800 overflow-x-auto pb-1 scrollbar-none">
+      <nav className="flex items-center gap-1 border-b border-[#CDD0D5] overflow-x-auto pb-1 scrollbar-none">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               onClick={() => onSelectTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all shrink-0 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0 cursor-pointer ${
                 isActive
-                  ? 'bg-amber-400 text-slate-950 font-bold shadow-lg shadow-amber-950/50'
-                  : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900'
+                  ? 'bg-blue-600 text-white font-bold shadow-xs'
+                  : 'text-[#626773] hover:text-[#292C32] hover:bg-slate-100'
               }`}
             >
               {tab.icon}

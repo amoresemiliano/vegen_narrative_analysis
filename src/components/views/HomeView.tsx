@@ -17,53 +17,50 @@ export const HomeView: React.FC<Props> = ({ onSearchTopic, onSelectView, onOpenD
     if (searchInput.trim()) {
       onSearchTopic(searchInput.trim());
     } else {
-      onSearchTopic('Flat Earth / Terraplanismo');
+      onSearchTopic('Terraplanismo / Tierra Plana');
     }
   };
 
   return (
     <div className="space-y-10 pb-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-8 pb-12 sm:py-16 text-center">
-        {/* Ambient mesh background effects */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-600/15 via-amber-500/10 to-rose-500/10 rounded-full blur-3xl -z-10 pointer-events-none" />
-
+      <section className="relative overflow-hidden pt-6 pb-10 sm:py-14 text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-6">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs font-mono text-amber-300 shadow-xl">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Digital Discourse & Phenomenon Intelligence</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#CDD0D5] text-xs font-mono text-violet-800 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-violet-600" />
+            <span className="font-semibold">Inteligencia de discursos digitales y fenómenos</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-ping" />
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-100 font-sans leading-tight">
-            Understand the narratives <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 bg-clip-text text-transparent">
-              shaping digital conversations.
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#292C32] font-sans leading-tight">
+            Comprende las narrativas <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-r from-blue-700 via-violet-700 to-orange-600 bg-clip-text text-transparent">
+              que moldean las conversaciones digitales.
             </span>
           </h1>
 
-          <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
-            Investigate how topics unfold across networks, analyze dominant claims, track audience reaction friction, and map hidden connections across digital phenomena.
+          <p className="text-sm sm:text-lg text-[#626773] max-w-2xl mx-auto font-sans leading-relaxed">
+            Investiga cómo se despliegan los temas en redes, analiza afirmaciones dominantes, mide la fricción en las reacciones de la audiencia y mapea conexiones ocultas entre fenómenos digitales.
           </p>
 
           {/* Large Search Form */}
-          <form onSubmit={handleSubmit} className="pt-4 max-w-2xl mx-auto">
-            <div className="relative flex items-center shadow-2xl rounded-2xl bg-slate-900 border border-slate-700/80 p-1.5 focus-within:border-amber-400/80 transition-all">
-              <Search className="w-6 h-6 text-slate-400 ml-3.5 shrink-0" />
+          <form onSubmit={handleSubmit} className="pt-2 max-w-2xl mx-auto">
+            <div className="relative flex items-center shadow-md rounded-2xl bg-white border border-[#CDD0D5] p-1.5 focus-within:border-blue-600 transition-all">
+              <Search className="w-6 h-6 text-[#626773] ml-3.5 shrink-0" />
               <input
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="What do you want to understand? (e.g. Flat Earth)"
-                className="w-full bg-transparent px-3 py-3 text-slate-100 placeholder-slate-400 text-sm sm:text-base focus:outline-none"
+                placeholder="¿Qué quieres comprender? (ej. Terraplanismo)"
+                className="w-full bg-transparent px-3 py-3 text-[#292C32] placeholder-[#626773] text-sm sm:text-base focus:outline-none"
               />
               <button
                 type="submit"
-                className="px-5 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-semibold rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shrink-0 shadow-lg"
+                className="px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shrink-0 shadow-sm cursor-pointer"
               >
-                <span>Explore Topic</span>
+                <span>Explorar tema</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -71,35 +68,35 @@ export const HomeView: React.FC<Props> = ({ onSearchTopic, onSelectView, onOpenD
 
           {/* Suggested Topic Chips */}
           <div className="pt-2 flex flex-wrap items-center justify-center gap-2 text-xs">
-            <span className="text-slate-400 font-mono text-[11px] mr-1">Suggested Topics:</span>
+            <span className="text-[#626773] font-mono text-[11px] font-semibold mr-1">Temas sugeridos:</span>
             {SAMPLE_SEARCH_TOPICS.map((topic) => (
               <button
                 key={topic.id}
                 onClick={() => onSearchTopic(topic.name)}
-                className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-300 border border-slate-800 transition flex items-center gap-1.5 group"
+                className="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-[#292C32] hover:text-blue-700 border border-[#CDD0D5] transition flex items-center gap-1.5 group cursor-pointer shadow-2xs"
               >
-                <span>{topic.name}</span>
-                <span className="text-[10px] text-slate-400 font-mono group-hover:text-amber-400">({topic.tag})</span>
+                <span className="font-medium">{topic.name}</span>
+                <span className="text-[10px] text-[#626773] font-mono group-hover:text-blue-600">({topic.tag})</span>
               </button>
             ))}
           </div>
 
           {/* Secondary Action & Methodological Note */}
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-[#626773]">
             <button
               onClick={() => onSelectView('analyze')}
-              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition flex items-center gap-2"
+              className="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 border border-[#CDD0D5] text-[#292C32] font-semibold transition flex items-center gap-2 cursor-pointer shadow-2xs"
             >
-              <Cpu className="w-4 h-4 text-indigo-400" />
-              <span>Or analyze a specific publication manually</span>
+              <Cpu className="w-4 h-4 text-violet-600" />
+              <span>Analizar una publicación específica manualmente</span>
             </button>
 
             <button
               onClick={onOpenDisclaimer}
-              className="text-slate-400 hover:text-amber-300 underline underline-offset-4 flex items-center gap-1 transition"
+              className="text-[#626773] hover:text-blue-700 underline underline-offset-4 flex items-center gap-1 transition cursor-pointer font-medium"
             >
               <HelpCircle className="w-3.5 h-3.5" />
-              <span>Read research ethics & methodology</span>
+              <span>Leer marco metodológico y ético</span>
             </button>
           </div>
         </div>
@@ -107,60 +104,60 @@ export const HomeView: React.FC<Props> = ({ onSearchTopic, onSelectView, onOpenD
 
       {/* Five Core Analytical Questions Section */}
       <section className="max-w-7xl mx-auto px-4">
-        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+        <div className="bg-[#F1F2F4] border border-[#CDD0D5] rounded-2xl p-6 sm:p-8 space-y-6 shadow-xs">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#CDD0D5] pb-4">
             <div>
-              <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-                <Activity className="w-5 h-5 text-amber-400" />
-                The 5 Questions of Narrative Intelligence
+              <h2 className="text-lg font-bold text-[#292C32] flex items-center gap-2">
+                <Activity className="w-5 h-5 text-violet-600" />
+                Las 5 preguntas de la Inteligencia Narrativa
               </h2>
-              <p className="text-xs text-slate-400">
-                Progressive framework to deconstruct digital phenomena without diagnosing individuals.
+              <p className="text-xs text-[#626773]">
+                Marco analítico para desglosar fenómenos digitales evaluando patrones del contenido.
               </p>
             </div>
-            <span className="px-3 py-1 bg-slate-800 text-amber-300 text-xs font-mono rounded-lg border border-slate-700">
-              FRAMEWORK V1.2
+            <span className="px-3 py-1 bg-white text-violet-800 text-xs font-mono font-bold rounded-lg border border-[#CDD0D5]">
+              MARCO METODOLÓGICO V1.2
             </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">01 / Content</span>
-              <h3 className="font-semibold text-sm text-slate-200">What is being said?</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Key claims, entities, keywords, and linguistic markers in the analyzed sample.
+            <div className="bg-white p-4 rounded-xl border border-[#CDD0D5] space-y-2">
+              <span className="text-[10px] font-mono text-violet-700 font-bold uppercase tracking-widest block">01 / Contenido</span>
+              <h3 className="font-bold text-sm text-[#292C32]">¿Qué se está diciendo?</h3>
+              <p className="text-xs text-[#626773] leading-relaxed">
+                Afirmaciones clave, entidades, palabras clave y marcadores lingüísticos.
               </p>
             </div>
 
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">02 / Narrative</span>
-              <h3 className="font-semibold text-sm text-slate-200">How is it built?</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Core framing, institutional distrust, and empirical intuition structures.
+            <div className="bg-white p-4 rounded-xl border border-[#CDD0D5] space-y-2">
+              <span className="text-[10px] font-mono text-violet-700 font-bold uppercase tracking-widest block">02 / Narrativa</span>
+              <h3 className="font-bold text-sm text-[#292C32]">¿Cómo se construye?</h3>
+              <p className="text-xs text-[#626773] leading-relaxed">
+                Encuadres principales, desconfianza institucional e intuición empírica.
               </p>
             </div>
 
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">03 / Reaction</span>
-              <h3 className="font-semibold text-sm text-slate-200">How does audience respond?</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Agreement, rejection, hostility, ridicule, uncertainty, and indignation.
+            <div className="bg-white p-4 rounded-xl border border-[#CDD0D5] space-y-2">
+              <span className="text-[10px] font-mono text-violet-700 font-bold uppercase tracking-widest block">03 / Reacción</span>
+              <h3 className="font-bold text-sm text-[#292C32]">¿Cómo responde la audiencia?</h3>
+              <p className="text-xs text-[#626773] leading-relaxed">
+                Acuerdo, rechazo, hostilidad, ridiculización, incertidumbre e indignación.
               </p>
             </div>
 
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">04 / Communities</span>
-              <h3 className="font-semibold text-sm text-slate-200">What patterns emerge?</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Discourse traits across source groups and country clusters.
+            <div className="bg-white p-4 rounded-xl border border-[#CDD0D5] space-y-2">
+              <span className="text-[10px] font-mono text-violet-700 font-bold uppercase tracking-widest block">04 / Comunidades</span>
+              <h3 className="font-bold text-sm text-[#292C32]">¿Qué patrones emergen?</h3>
+              <p className="text-xs text-[#626773] leading-relaxed">
+                Rasgos discursivos entre fuentes y agrupaciones geográficas.
               </p>
             </div>
 
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-widest block">05 / Connections</span>
-              <h3 className="font-semibold text-sm text-slate-200">What else is linked?</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Shared vocabulary and narrative overlap with other digital topics.
+            <div className="bg-white p-4 rounded-xl border border-[#CDD0D5] space-y-2">
+              <span className="text-[10px] font-mono text-violet-700 font-bold uppercase tracking-widest block">05 / Conexiones</span>
+              <h3 className="font-bold text-sm text-[#292C32]">¿Qué temas se vinculan?</h3>
+              <p className="text-xs text-[#626773] leading-relaxed">
+                Vocabulario compartido y superposición con otros temas digitales.
               </p>
             </div>
           </div>
@@ -171,43 +168,43 @@ export const HomeView: React.FC<Props> = ({ onSearchTopic, onSelectView, onOpenD
       <section className="max-w-7xl mx-auto px-4 space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-indigo-400" />
-              Recent Simulated Research Projects
+            <h2 className="text-lg font-bold text-[#292C32] flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-blue-600" />
+              Proyectos de investigación simulados recientes
             </h2>
-            <p className="text-xs text-slate-400">Click to explore pre-loaded prototype datasets instantly</p>
+            <p className="text-xs text-[#626773]">Haz clic para explorar muestras precargadas</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Primary Demo Card */}
           <div
-            onClick={() => onSearchTopic('Flat Earth / Terraplanismo')}
-            className="group bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-xl relative overflow-hidden"
+            onClick={() => onSearchTopic('Terraplanismo / Tierra Plana')}
+            className="group bg-white border border-[#CDD0D5] hover:border-violet-500 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-sm relative overflow-hidden"
           >
             <div className="flex justify-between items-start mb-3">
-              <span className="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 text-[11px] font-mono font-semibold">
-                FEATURED DATASET
+              <span className="px-2.5 py-1 rounded bg-violet-50 text-violet-800 border border-violet-200 text-[11px] font-mono font-bold">
+                MUESTRA PRINCIPAL
               </span>
-              <span className="text-xs font-mono text-slate-400">1,420 Publications</span>
+              <span className="text-xs font-mono text-[#626773]">1.420 Publicaciones</span>
             </div>
 
-            <h3 className="text-xl font-bold text-slate-100 group-hover:text-amber-300 transition-colors mb-2">
-              Flat Earth / Terraplanismo
+            <h3 className="text-xl font-bold text-[#292C32] group-hover:text-violet-700 transition-colors mb-2">
+              Terraplanismo / Tierra Plana
             </h3>
 
-            <p className="text-xs text-slate-300 leading-relaxed mb-4">
-              Comprehensive analysis of empirical skepticism, laser curvature demonstrations, anti-NASA narratives, and Antarctic Treaty geopolitical discourse.
+            <p className="text-xs text-[#626773] leading-relaxed mb-4">
+              Análisis completo sobre escepticismo empírico, demostraciones con láser, narrativa crítica hacia la NASA y discurso sobre el Tratado Antártico.
             </p>
 
-            <div className="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400 border-t border-slate-800 pt-3">
-              <span className="bg-slate-950 px-2 py-0.5 rounded">High Polarization</span>
-              <span className="bg-slate-950 px-2 py-0.5 rounded">4 Main Narratives</span>
-              <span className="bg-slate-950 px-2 py-0.5 rounded">12 Countries</span>
+            <div className="flex flex-wrap gap-2 text-[11px] font-mono text-[#626773] border-t border-[#CDD0D5] pt-3">
+              <span className="bg-[#F1F2F4] px-2 py-0.5 rounded font-semibold text-[#292C32]">Alta polarización</span>
+              <span className="bg-[#F1F2F4] px-2 py-0.5 rounded font-semibold text-[#292C32]">4 Narrativas clave</span>
+              <span className="bg-[#F1F2F4] px-2 py-0.5 rounded font-semibold text-[#292C32]">12 Países</span>
             </div>
 
-            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-amber-400 group-hover:translate-x-1 transition-transform">
-              <span>Open Research Workspace</span>
+            <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-700 group-hover:translate-x-1 transition-transform">
+              <span>Abrir espacio de trabajo</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </div>
@@ -215,36 +212,36 @@ export const HomeView: React.FC<Props> = ({ onSearchTopic, onSelectView, onOpenD
           {/* Secondary Mock Datasets */}
           <div className="space-y-3">
             <div
-              onClick={() => onSearchTopic('AI misinformation')}
-              className="p-4 bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-xl transition cursor-pointer flex justify-between items-center"
+              onClick={() => onSearchTopic('Desinformación con IA')}
+              className="p-4 bg-white border border-[#CDD0D5] hover:border-blue-400 rounded-xl transition cursor-pointer flex justify-between items-center shadow-2xs"
             >
               <div>
-                <h4 className="font-semibold text-sm text-slate-200">AI Misinformation & Deepfakes</h4>
-                <p className="text-xs text-slate-400">Discourse around synthetic media in political campaigns</p>
+                <h4 className="font-bold text-sm text-[#292C32]">Desinformación con IA y medios sintéticos</h4>
+                <p className="text-xs text-[#626773]">Discursos en torno a contenidos generados por IA en campañas</p>
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-400" />
+              <ArrowRight className="w-4 h-4 text-[#626773]" />
             </div>
 
             <div
-              onClick={() => onSearchTopic('Argentina World Cup')}
-              className="p-4 bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-xl transition cursor-pointer flex justify-between items-center"
+              onClick={() => onSearchTopic('Mundial de Fútbol y Orgullo')}
+              className="p-4 bg-white border border-[#CDD0D5] hover:border-blue-400 rounded-xl transition cursor-pointer flex justify-between items-center shadow-2xs"
             >
               <div>
-                <h4 className="font-semibold text-sm text-slate-200">Argentina World Cup Narratives</h4>
-                <p className="text-xs text-slate-400">Sports euphoria, national pride & online identity dynamics</p>
+                <h4 className="font-bold text-sm text-[#292C32]">Narrativas del Mundial de Fútbol</h4>
+                <p className="text-xs text-[#626773]">Euforia colectiva, orgullo e identidad digital</p>
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-400" />
+              <ArrowRight className="w-4 h-4 text-[#626773]" />
             </div>
 
             <div
-              onClick={() => onSearchTopic('Cancel culture')}
-              className="p-4 bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-xl transition cursor-pointer flex justify-between items-center"
+              onClick={() => onSearchTopic('Cultura de la Cancelación')}
+              className="p-4 bg-white border border-[#CDD0D5] hover:border-blue-400 rounded-xl transition cursor-pointer flex justify-between items-center shadow-2xs"
             >
               <div>
-                <h4 className="font-semibold text-sm text-slate-200">Cancel Culture & Stigmatization</h4>
-                <p className="text-xs text-slate-400">Moral outrage escalation and public figure pushback</p>
+                <h4 className="font-bold text-sm text-[#292C32]">Cultura de la cancelación y estigmatización</h4>
+                <p className="text-xs text-[#626773]">Escaladas de indignación y dinámicas de rechazo</p>
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-400" />
+              <ArrowRight className="w-4 h-4 text-[#626773]" />
             </div>
           </div>
         </div>
@@ -252,18 +249,18 @@ export const HomeView: React.FC<Props> = ({ onSearchTopic, onSelectView, onOpenD
 
       {/* Safety & Methodological Principles Footnote */}
       <section className="max-w-7xl mx-auto px-4">
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="p-4 rounded-xl bg-white border border-[#CDD0D5] text-xs text-[#626773] flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-emerald-400 shrink-0" />
+            <Shield className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>
-              <strong className="text-slate-300">Methodology Policy:</strong> Analyzes content and observable discourse patterns. Does NOT diagnose individuals or assign psychological traits.
+              <strong className="text-[#292C32]">Política metodológica:</strong> Describe patrones observados en el contenido analizado. No representa diagnósticos psicológicos ni características individuales.
             </span>
           </div>
           <button
             onClick={onOpenDisclaimer}
-            className="text-amber-400 hover:underline font-mono text-[11px] shrink-0"
+            className="text-blue-700 hover:underline font-mono text-[11px] font-bold shrink-0 cursor-pointer"
           >
-            Learn more
+            Saber más
           </button>
         </div>
       </section>
